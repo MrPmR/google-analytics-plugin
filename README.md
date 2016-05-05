@@ -82,7 +82,7 @@ You also will need to manually add the Google Analytics SDK files:
 * Download the Google Analytics SDK 3.0 for [iOS](https://developers.google.com/analytics/devguides/collection/ios/) and/or [Android](https://developers.google.com/analytics/devguides/collection/android/)
 * For iOS, add the downloaded Google Analytics SDK header files and libraries according to the [Getting Started](https://developers.google.com/analytics/devguides/collection/ios/v3) documentation
 * For Android, add `libGoogleAnalyticsServices.jar` to your Cordova Android project's `/libs` directory and build path
-
+* Windows is coming
 #Integrating with Lavaca
 The `lavaca` directory includes a component that can be added to a <a href="http://getlavaca.com">Lavaca</a> project.  It offers a way to use the web `analytics.js` when the app is running in the browser and not packaged as Cordova.
 
