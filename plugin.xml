@@ -71,10 +71,10 @@
     </config-file>
     <source-file src="android/UniversalAnalyticsPlugin.java" target-dir="src/com/danielcwilson/plugins/analytics" />
   </platform>
-  <platform name="windows">
-    <js-module src="src/windows/UniversalAnalyticsPluginProxy.js" name="UniversalAnalyticsProxy">
-      <merges target="" />
-    </js-module>
-  </platorm>
+    <platform name="windows">
+        <js-module src="src/windows/UniversalAnalyticsProxy.js" name="UniversalAnalyticsProxy">
+            <merges target=""/>
+        </js-module>
+    </platform>
     
 </plugin>
