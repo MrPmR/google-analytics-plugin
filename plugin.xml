@@ -72,9 +72,22 @@
     <source-file src="android/UniversalAnalyticsPlugin.java" target-dir="src/com/danielcwilson/plugins/analytics" />
   </platform>
     <platform name="windows">
-        <js-module src="src/windows/UniversalAnalyticsProxy.js" name="UniversalAnalyticsProxy">
+      <config-file target="config.xml" parent="/*">
+        <feature name="UniversalAnalytics">
+          <param name="w-package" value="UniversalAnalyticsPlugin" />
+        </feature>
+      </config-file>
+          <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
+        <Capability Name="ID_CAP_NETWORKING" />
+    </config-file>
+
+    <source-file src="windows/UniversalAnalytics.cs" />
+    <!--<source-file src="wp8/PhoneHelpers.cs" />
+    <source-file src="wp8/PhoneNameResolver.cs" />
+    <source-file src="wp8/PlatformInfoProvider.WP.cs" />-->
+        <!--<js-module src="src/windows/UniversalAnalyticsProxy.js" name="UniversalAnalyticsProxy">
             <merges target=""/>
-        </js-module>
+        </js-module>-->
     </platform>
     
 </plugin>
