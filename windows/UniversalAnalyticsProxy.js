@@ -1,63 +1,12 @@
-
-
-
-
-UniversalAnalyticsProxy = {
-    
-    startTrackerWithId: function (successCallback, failCallback, trackerIdArray)
-    {
-        console.log('trackerIdArray');
-        var trackerId = trackerIdArray[0];
-        console.log('starting tracker with id' + trackerId);
-        var res = UniversalAnalyticsRuntimeComponent.UniversalAnalytics.startTrackerWithId(trackerId);
+cordova.commandProxy.add("UniversalAnalyticsPlugin",{
+    startTrackerWithId:function(successCallback, errorCallback, strInput) {
+        console.log("strInput" + strInput);
+        var res = UniversalAnalyticsRuntimeComponent.UniversalAnalytics.startTrackerWithId(strInput);
         if(res.indexOf("Error") == 0) {
             errorCallback(res);
         }
         else {
-            console.log("success" + res);
             successCallback(res);
         }
-        // successCallback([version.major, version.minor, version.build, version.revision].join('.'));
-    },
-    trackView: function (successCallback, failCallback, screen)
-    {
-        console.log('tracking view' + screen);
-    },
-    trackEvent: function (successCallback, failCallback, category, action, label, value)
-    {
-        console.log('tracking event' + category + action + label);
-    },
-    trackException: function (successCallback, failCallback, args)
-    {
-         console.log('tracking exception' + args);
-    },
-    trackTiming: function (successCallback, failCallback, category, intervalInMilliseconds, name, label)
-    {
-          console.log('tracking timing' + category);
-    },
-    addTransaction: function (successCallback, failCallback, args)
-    {
-         console.log('add transaction' + args);
-    },
-    addTransactionItem: function (successCallback, failCallback, args)
-    {
-         console.log('add transactionItem' + args);
-    },
-    setUserId: function (successCallback, failCallback, args)
-    {
-         console.log('set user id' + args);
-        throw 'setUserId is not implemented for Lavaca';
-    },
-    debugMode: function (successCallback, failCallback, args)
-    {
-        console.log('debug mode' + args);
-        throw 'debugMode is not implemented for Lavaca';
-
-    },
-    enableUncaughtExceptionReporting: function (successCallback, failCallback, args)
-    {
-         console.log('enable uncaught reporting' + args);
-    },
-  
-};
-cordova.commandProxy.add("UniversalAnalyticsPlugin", UniversalAnalyticsProxy);
+    }
+});
