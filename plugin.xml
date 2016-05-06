@@ -74,7 +74,7 @@
     <platform name="windows">
       <config-file target="config.xml" parent="/*">
         <feature name="UniversalAnalytics">
-          <param name="w-package" value="UniversalAnalyticsPlugin" />
+          <param name="wp-package" value="UniversalAnalyticsPlugin" />
         </feature>
       </config-file>
           <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
