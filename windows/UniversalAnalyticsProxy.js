@@ -1,7 +1,8 @@
-cordova.commandProxy.add("UniversalAnalyticsPlugin",{
+cordova.commandProxy.add("UniversalAnalytics",{
     startTrackerWithId:function(successCallback, errorCallback, strInput) {
-        console.log("strInput" + strInput);
-        var res = UniversalAnalyticsRuntimeComponent.UniversalAnalytics.startTrackerWithId(strInput);
+        var trackingId = strInput[0];
+        
+        var res = UniversalAnalyticsRuntimeComponent.UniversalAnalytics.startTrackerWithId(trackingId);
         if(res.indexOf("Error") == 0) {
             errorCallback(res);
         }
