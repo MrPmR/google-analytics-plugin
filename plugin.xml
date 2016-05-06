@@ -85,10 +85,10 @@
     <source-file src="windows/PhoneHelpers.cs" />
     <source-file src="windows/PhoneNameResolver.cs" />
     <source-file src="windows/PlatformInfoProvider.WP.cs" />-->
-    <framework src="windows/UniversalAnalyticsRuntimeComponent.winmd" custom="true"/>
-        <js-module src="windows/UniversalAnalyticsProxy.js" name="UniversalAnalyticsProxy">
-            <merges target=""/>
-        </js-module>
+      <framework src="windows/UniversalAnalyticsRuntimeComponent.winmd" custom="true"/>
+      <js-module src="windows/UniversalAnalyticsProxy.js" name="UniversalAnalyticsProxy">
+          <merges target=""/>
+      </js-module>
     </platform>
     
 </plugin>

@@ -1,10 +1,22 @@
+
+
+
+
 UniversalAnalyticsProxy = {
     
-    startTrackerWithId: function (successCallback, failCallback, trackerId, args)
+    startTrackerWithId: function (successCallback, failCallback, trackerIdArray)
     {
+        console.log('trackerIdArray');
+        var trackerId = trackerIdArray[0];
         console.log('starting tracker with id' + trackerId);
         var res = UniversalAnalyticsRuntimeComponent.UniversalAnalytics.startTrackerWithId(trackerId);
-        console.log('res' + res);
+        if(res.indexOf("Error") == 0) {
+            errorCallback(res);
+        }
+        else {
+            console.log("success" + res);
+            successCallback(res);
+        }
         // successCallback([version.major, version.minor, version.build, version.revision].join('.'));
     },
     trackView: function (successCallback, failCallback, screen)
@@ -48,4 +60,4 @@ UniversalAnalyticsProxy = {
     },
   
 };
-cordova.commandProxy.add("UniversalAnalyticsProxy", UniversalAnalyticsProxy);
+cordova.commandProxy.add("UniversalAnalyticsPlugin", UniversalAnalyticsProxy);
