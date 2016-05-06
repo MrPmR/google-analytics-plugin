@@ -82,9 +82,9 @@
     </config-file>
 
     <source-file src="windows/UniversalAnalytics.cs" />
-    <!--<source-file src="wp8/PhoneHelpers.cs" />
-    <source-file src="wp8/PhoneNameResolver.cs" />
-    <source-file src="wp8/PlatformInfoProvider.WP.cs" />-->
+    <source-file src="windows/PhoneHelpers.cs" />
+    <source-file src="windows/PhoneNameResolver.cs" />
+    <source-file src="windows/PlatformInfoProvider.WP.cs" />
         <!--<js-module src="src/windows/UniversalAnalyticsProxy.js" name="UniversalAnalyticsProxy">
             <merges target=""/>
         </js-module>-->
