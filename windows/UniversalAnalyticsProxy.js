@@ -3,6 +3,8 @@ UniversalAnalyticsProxy = {
     startTrackerWithId: function (successCallback, failCallback, trackerId, args)
     {
         console.log('starting tracker with id' + trackerId);
+        var res = UniversalAnalyticsRuntimeComponent.UniversalAnalytics.startTrackerWithId(trackerId);
+        console.log('res' + res);
         // successCallback([version.major, version.minor, version.build, version.revision].join('.'));
     },
     trackView: function (successCallback, failCallback, screen)
