@@ -1,54 +1,142 @@
 cordova.commandProxy.add("UniversalAnalytics",{
+    trackerStarted: false,
+    debugModeEnabled: false,
+    customDimensions: {},
     startTrackerWithId:function(successCallback, failCallback, args) {
+        // TODO: On start, create resume and suspend events
         if(args.length < 0)
-            failCallback("Bad tracking Id");
-        var config = new GoogleAnalytics.EasyTrackerConfig();
-        config.trackingId = args[0];
-        // TODO: Get real app name/version
-        config.appName = "Test App";
-        config.appVersion = "1.0.0.0";
-        GoogleAnalytics.EasyTracker.current.config = config;
-        // trackingId = JSON.stringify(trackingId);
-        // try {
-        //     var res = UniversalAnalyticsRuntimeComponent.UniversalAnalytics.def.startTrackerWithId(trackingId);
-        //     successCallback();
-            
-        // } catch (error) {
-        //     console.log("Error while starting tracker : " + error);
-        //     errorCallback(res);
-        // }
+            failCallback("Tracker Id is not valid.");
+        else
+        {
+            var config = new GoogleAnalytics.EasyTrackerConfig();
+            config.trackingId = args[0];
+            // TODO: Get real app name/version
+            config.appName = "Test App";
+            config.appVersion = "1.0.0.0";
+            GoogleAnalytics.EasyTracker.current.config = config;
+            // this.tracker = GoogleAnalytics.EasyTracker.getTracker();
+            this.trackerStarted = true;
+            successCallback("Tracker started");
+        }
         
+    },
+    trackView: function (successCallback, failCallback, args)
+    {
+        if(args == null || args.length == 0)
+            failCallback("Expected one non-empty string argument");
+        else
+        {
+            var view = args[0];
+            GoogleAnalytics.EasyTracker.getTracker().sendView(view);
+            successCallback("Track Screen: " + view);
+        }
+        
+    },
+    addCustomDimension: function (successCallback, failCallback, args)
+    {
+      // TODO: Deal with custom dimensions  
     },
     trackEvent: function (successCallback, failCallback, args)
     {
-        switch(args.length)
+        if(args == null || args.length < 2)
+            failCallback("Expected non-empty string arguments");
+        else
         {
-            case 0:
-                failCallback("Expected at least two arguments");
-                break;
-            case 1:
-                failCallback("Expected at least two arguments");
-                break;
-            case 2:
-                GoogleAnalytics.EasyTracker.getTracker().sendEvent(args[0], args[1]);
-                break;
-            case 3:
-                GoogleAnalytics.EasyTracker.getTracker().sendEvent(args[0], args[1], args[2]);
-                break;
-            default:
-                GoogleAnalytics.EasyTracker.getTracker().sendEvent(args[0], args[1], args[2], args[3]);
-                break;
+            switch(args.length)
+            {
+                case 2:
+                    GoogleAnalytics.EasyTracker.getTracker().sendEvent(args[0], args[1]);
+                    break;
+                case 3:
+                    GoogleAnalytics.EasyTracker.getTracker().sendEvent(args[0], args[1], args[2]);
+                    break;
+                case 4:
+                    GoogleAnalytics.EasyTracker.getTracker().sendEvent(args[0], args[1], args[2], args[3]);
+                    break;
+                default:
+                    failCallback("Wrong number of arguments when trying to track Event.");
+                    break;        
+            }
+            successCallback("Track Event: " + args[0]);
         }
-        successCallback();
-        // args = JSON.stringify(args);
-        // try {
-        //     var res = UniversalAnalyticsRuntimeComponent.UniversalAnalytics.def.trackEvent(args);
-        //     successCallback();
-        // }
-        // catch (error)
-        // {
-        //     console.log("Error while tracking event : " + error);
-        //     errorCallback(res);
-        // }
+
+    },
+    trackException: function (successCallback, failCallback, args)
+    {
+        if (! this.trackerStarted)
+        {
+            failCallback("Tracker not started");
+            return;
+        }
+        
+        if(args != null && args.length == 2)
+        {
+            GoogleAnalytics.EasyTracker.getTracker().sendException(args[0], args[1]);
+            successCallback("Track Exception: " + args[0]);
+        }
+        else
+        {
+            failCallback("Expected non-empty string arguments.");
+        }
+    },
+    trackTiming: function (successCallback, failCallback, args)
+    {
+        if(!this.trackerStarted)
+        {
+            failCallback("Tracker not started");
+            return;
+        }
+        if( args != null && args.length == 4)
+        {
+            GoogleAnalytics.EasyTracker.getTracker().sendTiming(args[1], args[0], args[2], args[3]);
+            successCallback("Track Timing: " + args[0]);
+        }
+        else
+        {
+            failCallback("Expected non-empty string arguments.");
+        }
+    },
+    addTransaction: function (successCallback, failCallback, args)
+    {
+        if(!this.trackerStarted)
+        {
+            failCallback("Tracker not started");
+        }
+        if(args != null && args.length == 6 && args[0] != null && args[0] != "")
+        {
+            // TODO: Support transactions
+        }
+        else
+        {
+            failCallback("Expected non-empty ID.")
+        }
+    },
+    addTransactionItem: function (successCallback, failCallback, args)
+    {
+        if(!this.trackerStarted)
+        {
+            failCallback("Tracker not started");
+        }
+        if(args != null && args.length == 7 && args[0] != null && args[0] != "")
+        {
+            // TODO: Support transactions
+        }
+        else
+        {
+            failCallback("Expected non-empty ID.")
+        }
+    },
+    debugMode: function(successCallback, failCallback, args)
+    {
+        
+    },
+    setUserId: function(successCallback, failCallback, args)
+    {
+        
+    },
+    enableUncaughtExceptionReporting: function( successCallback, failCallback, args)
+    {
+        
     }
+    
 });
