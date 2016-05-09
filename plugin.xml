@@ -77,6 +77,8 @@
       </js-module>
       <framework src="windows/UniversalAnalyticsRuntimeComponent.winmd" custom="true"/>
       <framework src="windows/GoogleAnalytics.Core.winmd" custom="true"/>
+      <framework src="windows/GoogleAnalytics.winmd" custom="true"/>
+      <framework src="windows/Newtonsoft.Json.dll" custom="true" />
       
 
     </platform>

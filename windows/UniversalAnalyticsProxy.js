@@ -1,17 +1,11 @@
 cordova.commandProxy.add("UniversalAnalytics",{
-    UA: null,
-    startTrackerWithId:function(successCallback, errorCallback, strInput) {
-        var trackingId = strInput[0];
-        if(this.UA == null)
-        {
-            this.UA = new UniversalAnalyticsRuntimeComponent.UniversalAnalytics();
+    startTrackerWithId:function(successCallback, errorCallback, trackingId) {
+        try {
+            var res = UniversalAnalyticsRuntimeComponent.UniversalAnalytics.startTrackerWithId(trackingId);
+            
+        } catch (error) {
+            console.log("Error while starting tracker : " + error);
         }
-        var res = this.UA.startTrackerWithId(trackingId);
-        if(res.indexOf("Error") == 0) {
-            errorCallback(res);
-        }
-        else {
-            successCallback(res);
-        }
+        
     }
 });
