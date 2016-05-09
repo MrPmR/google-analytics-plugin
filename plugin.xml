@@ -76,6 +76,8 @@
           <merges target=""/>
       </js-module>
       <framework src="windows/UniversalAnalyticsRuntimeComponent.winmd" custom="true"/>
+      <framework src="windows/GoogleAnalytics.Core.winmd" custom="true"/>
+      
 
     </platform>
     
