@@ -14,7 +14,7 @@
     <clobbers target="analytics" />
   </js-module>
 
-  <platform name="ios">
+  <!--<platform name="ios">
     <config-file target="config.xml" parent="/*">
       <feature name="UniversalAnalytics">
         <param name="ios-package" value="UniversalAnalyticsPlugin" />
@@ -40,7 +40,7 @@
     <framework src="CoreData.framework" />
     <framework src="libz.dylib" />
     <framework src="libsqlite3.dylib" />
-  </platform>
+  </platform>-->
 
   <platform name="android">
     <framework src="com.google.android.gms:play-services-analytics:+" />

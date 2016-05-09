@@ -6,8 +6,7 @@
     "id": "cordova-plugin-google-analytics",
     "platforms": [
       "android",
-      "windows",      
-      "ios"
+      "windows"
     ]
   },
   "repository": {
