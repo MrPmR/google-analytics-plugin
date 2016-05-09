@@ -1,7 +1,7 @@
 cordova.commandProxy.add("UniversalAnalytics",{
-    tracker: null,
+    UA: null,
     startTrackerWithId:function(successCallback, errorCallback, strInput) {
-        var UA = strInput[0];
+        var trackingId = strInput[0];
         if(this.UA == null)
         {
             this.UA = new UniversalAnalyticsRuntimeComponent.UniversalAnalytics();
