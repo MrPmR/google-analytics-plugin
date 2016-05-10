@@ -15,7 +15,7 @@ cordova.commandProxy.add("UniversalAnalytics",{
             var version = Windows.ApplicationModel.Package.current.id.version;
             config.appVersion = [version.major, version.minor, version.build, version.revision].join('.');
             GoogleAnalytics.EasyTracker.current.config = config;
-            GoogleAnalytics.resetTracker();
+            GoogleAnalytics.EasyTracker.resetTracker();
             this.trackerStarted = true;
             successCallback("Tracker started");
         }
