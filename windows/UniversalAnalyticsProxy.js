@@ -11,14 +11,14 @@ cordova.commandProxy.add("UniversalAnalytics",{
             if(this.trackerStarted)
             {
                 console.log('Tracker already started');
-                return;
+                
             }
             var config = new GoogleAnalytics.EasyTrackerConfig();
             config.trackingId = args[0];
             // TODO: Get real app name/version
             config.appName = "Hall Monitor";
             var version = Windows.ApplicationModel.Package.current.id.version;
-            config.appVersion = [version.major + version.minor + version.build + version.revision].join('.');
+            config.appVersion = [version.major, version.minor, version.build, version.revision].join('.');
             GoogleAnalytics.EasyTracker.current.config = config;
             // this.tracker = GoogleAnalytics.EasyTracker.getTracker();
             this.trackerStarted = true;
