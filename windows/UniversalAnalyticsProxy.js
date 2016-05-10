@@ -8,19 +8,14 @@ cordova.commandProxy.add("UniversalAnalytics",{
             failCallback("Tracker Id is not valid.");
         else
         {
-            if(this.trackerStarted)
-            {
-                console.log('Tracker already started');
-                
-            }
+            
             var config = new GoogleAnalytics.EasyTrackerConfig();
             config.trackingId = args[0];
-            // TODO: Get real app name/version
             config.appName = "Hall Monitor";
             var version = Windows.ApplicationModel.Package.current.id.version;
             config.appVersion = [version.major, version.minor, version.build, version.revision].join('.');
             GoogleAnalytics.EasyTracker.current.config = config;
-            // this.tracker = GoogleAnalytics.EasyTracker.getTracker();
+            GoogleAnalytics.resetTracker();
             this.trackerStarted = true;
             successCallback("Tracker started");
         }
